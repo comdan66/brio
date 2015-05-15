@@ -13,13 +13,6 @@ $(function () {
     'img/banner/05.jpg',
   ];
 
-
-
-
-
-
-
-
   var products = [
         { title: 'Karaoke Mixers',
           items: [{src: 'img/product/a.png', href: 'content1.html', text: 'dasdadsad dqasdasd'},
