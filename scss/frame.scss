@@ -6,14 +6,14 @@
 @import "_oa";
 
 
-@include font-face("Monaco", font-files("monaco/monaco.ttf", "monaco/monaco.otf"));
+// @include font-face("Monaco", font-files("monaco/monaco.ttf", "monaco/monaco.otf"));
 // @import url(http://fonts.googleapis.com/css?family=Gafata);
 
 * {
   &, &:after, &:before {
     vertical-align: top;
 
-    font-family: Monaco, Gafata, '微軟正黑體';
+    // font-family: Monaco, Gafata, '微軟正黑體';
     @include box-sizing(border-box);
     @include selection(rgba(150, 180, 230, 1.0000), rgba(237, 239, 244, 1.0000));
     @include font-smoothing(antialiased);
@@ -212,6 +212,7 @@ html {
             text-decoration: none;
 
             &:hover {
+              color: rgba(239, 81, 32, 1);
               text-decoration: underline;
             }
           }

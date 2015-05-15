@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="tw">
+  <head>
+    <meta http-equiv="Content-Language" content="zh-tw" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+
+    <title></title>
+
+    <link href="css/frame.css" rel="stylesheet" type="text/css" />
+    <link href="css/content.css" rel="stylesheet" type="text/css" />
+
+    <script src="res/jquery_v1.10.2/jquery-1.10.2.min.js" language="javascript" type="text/javascript" ></script>
+    <script src="js/frame.js" language="javascript" type="text/javascript" ></script>
+
+    <script type="text/javascript">
+      $(function () {
+        var name = 'content2';
+
+        var banner_name = 'banner.jpg';
+
+        var text = {
+          sub_title: 'asdasd',
+          big_title: 'dasdasda',
+          content: 'asdadasd asdadasd asdadasd<br/>asdadasdasdadasdasdadasdasdadasdasdadasd asdadasd asdadasd<br/>asdadasdasdadasdasdadasdasdadasd'
+        }
+
+        var pics_format = '.png'
+
+        var features = [
+          {big_title: 'Special feature', bg_color: 'rgba(242, 242, 242, 1)', features: [
+            {title: 'dadadsasd', content: 'dasdasd dfsfsfsdfs fasdf qeqw qwe qeq eqw eeqeqeqw'},
+            {title: 'dddddasd dasda', content: 'dasdasd dfsfsfsdfs fasdf qeqw qwe qeq eqw eeqeqeqw'},
+            {title: 'das', content: 'dasdasd dfsfsfsdfs fasdf qeqw qwe qeq eqw eeqeqeqw'},
+            {title: 'dddddasd dasda', content: 'dasdasd dfsfsfsdfs fasdf qeqw qwe qeq eqw eeqeqeqw'},
+          ]},
+          {big_title: 'Basic feature', bg_color: 'rgba(216, 213, 215, 1)', features: [
+            {title: 'dadadsasd', content: 'dasdasd dfsfsfsdfs fasdf qeqw qwe qeq eqw eeqeqeqw'},
+            {title: 'dddddasd dasda', content: 'dasdasd dfsfsfsdfs fasdf qeqw qwe qeq eqw eeqeqeqw'},
+            {title: 'das', content: 'dasdasd dfsfsfsdfs fasdf qeqw qwe qeq eqw eeqeqeqw'},
+            {title: 'dddddasd dasda', content: 'dasdasd dfsfsfsdfs fasdf qeqw qwe qeq eqw eeqeqeqw'},
+            {title: 'dadadsasd', content: 'dasdasd dfsfsfsdfs fasdf qeqw qwe qeq eqw eeqeqeqw'},
+            {title: 'dddddasd dasda', content: 'dasdasd dfsfsfsdfs fasdf qeqw qwe qeq eqw eeqeqeqw'},
+            {title: 'das', content: 'dasdasd dfsfsfsdfs fasdf qeqw qwe qeq eqw eeqeqeqw'},
+            {title: 'dddddasd dasda', content: 'dasdasd dfsfsfsdfs fasdf qeqw qwe qeq eqw eeqeqeqw'},
+          ]},
+        ];
+
+        var connectivity_banner_name = 'connectivity_banner.png';
+        var connectivity_items = [
+            {title: 'dasd', content: 'dasdasd dfsfsfsdfs fasdf  qwe qeq eqw eeqeqeqw'},
+            {title: 'dasd', content: 'dasdasd  fasdf qeqw qwe qeq eqw eeqeqeqw'},
+            {title: 'dasd', content: 'dasdasd dfsfsfsdfs fasdf qeqw  qeq eqw eeqeqeqw'},
+            {title: 'dasd', content: 'dasdasd dfsfsfsdfs  qeqw qwe qeq eqw eeqeqeqw'},
+          ];
+
+        // 以下不用理他
+
+        $('#banner').append ($('<img />').attr ('src', 'img/pics/' + name + '/' + banner_name));
+        $('#text').append ($('<div />').addClass ('sub_title').html (text.sub_title))
+                  .append ($('<div />').addClass ('big_title').html (text.big_title))
+                  .append ($('<div />').addClass ('content').html (text.content));
+
+        $('#pics .r').append (Array.apply (null, {length: 8}).map (function (t, i) {
+          var id = ('0' + (i + 1)).slice (-2);
+          return $('<img />').attr ('src', 'img/pics/' + name + '/s' + id + pics_format).click (function () {
+            $('#pics .l').empty ().append ($('<img />').attr ('src', 'img/pics/' + name + '/b' + id + pics_format));
+          });
+        })).find ('img').eq (0).click ()
+
+        $('#feature').append (features.map (function (t) {
+          return $('<div />').addClass ('feature').css ({'background-color': t.bg_color}).append ($('<div />').addClass ('big_title').html (t.big_title).add ($('<div />').addClass ('features').append (t.features.map (function (t) {
+            return $('<div />').addClass ('box').append ($('<div />').addClass ('ball')).append ($('<div />').addClass ('title').html (t.title)).append ($('<div />').addClass ('content').html (t.content));
+          }))));
+        }));
+
+        $('#connectivity').append ($('<img />').attr ('src', 'img/pics/' + name + '/' + connectivity_banner_name))
+                          .append ($('<div />').addClass ('items').append (connectivity_items.map (function (t) {
+                            return $('<div />').addClass ('item').append ($('<div />').addClass ('l'))
+                                                                 .append ($('<div />').addClass ('r').append ($('<div />').addClass ('title').append (t.title))
+                                                                                                     .append ($('<div />').addClass ('content').append (t.content)));
+                          })));
+      });
+    </script>
+  </head>
+  <body lang="zh-tw">
+
+    <div id='header'>
+      <div class='container'>
+        <div class='logo'>
+          <img src='img/site/logo.png' />
+        </div>
+        <div class='items'>
+          <div>
+            <a href='' class='item'>BRIO</a>
+            <a href='product.html' class='item active'>PRODUCT</a>
+            <a href='' class='item'>SUPPORT</a>
+          </div>
+        </div>
+        <div class='links'>
+          <a href='' class='shop'></a>
+          <a href='' class='ch'></a>
+          <a href='' class='en'></a>
+        </div>
+      </div>
+    </div>
+
+    <div id='menu'>
+      <div class='container'>
+        <div>
+          <a href='product.html#Karaoke Mixers'>Karaoke Mixers</a>
+          <a href='product.html#Karaoke Players'>Karaoke Players</a>
+          <a href='product.html#Active Speakers'>Active Speakers</a>
+          <a href='product.html#Wireless Mircrophone'>Wireless Mircrophone</a>
+        </div>
+      </div>
+    </div>
+
+    <div id='container'>
+      <div id='banner'></div>
+
+      <div id='text'>
+        <div class='sub_title'></div>
+        <div class='big_title'></div>
+        <div class='content'></div>
+      </div>
+
+      <div id='pics'>
+        <div class='container'>
+          <div class='l'></div>
+          <div class='r'></div>
+        </div>
+      </div>
+
+      <div id='feature'></div>
+
+      <div id='connectivity'>
+        <div class='big_title'>Connectivity</div>
+      </div>
+
+
+    </div>
+
+    <div id='footer1'>
+      <div class='container'>
+        <div class='logo'>
+          <img src='img/site/logoF.png' />
+          <div class='text'>BRIO Sound System Ltd.</div>
+        </div>
+        <div class='content'>
+          <div>
+            <div class='block'>
+              <div class='title'>BRIO</div>
+              <a href='' class='link'>about</a>
+              <a href='' class='link'>contact</a>
+              <a href='' class='link'>press</a>
+            </div>
+            <div class='block'>
+              <div class='title'>PRODUCT</div>
+              <a href='product.html#Karaoke Mixers' class='link'>Karaoke Mixers</a>
+              <a href='product.html#Karaoke Players' class='link'>Karaoke Players</a>
+              <a href='product.html#Active Speakers' class='link'>Active Speakers</a>
+              <a href='product.html#Wireless Mircrophone' class='link'>Wireless Mircrophone</a>
+            </div>
+            <div class='block'>
+              <div class='title'>SUPPORT</div>
+              <a href='' class='link'>FQA</a>
+              <a href='' class='link'>Download</a>
+              <a href='' class='link'>Email Submit</a>
+              <a href='' class='link'>Warranty information</a>
+            </div>
+          </div>
+        </div>
+        <div class='links'>
+          <div class='title'>SOCIAL</div>
+          <div class='link_container'>
+            <a href='' class='link fb'></a>
+            <a href='' class='link fb'></a>
+            <a href='' class='link fb'></a>
+            <a href='' class='link fb'></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id='footer2'>
+      <div class='container'>
+        <div class='bottom'>© 2014 BRIO Sound System Ltd.</div>
+      </div>
+    </div>
+
+  </body>
+</html>

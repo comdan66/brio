@@ -13,22 +13,47 @@ $(function () {
     'img/banner/05.jpg',
   ];
 
+
+
+
+
+
+
+
   var products = [
         { title: 'Karaoke Mixers',
-          items: [{src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},
-                  {src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},
-                  {src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},
-                  {src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},
-                  {src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},]
+          items: [{src: 'img/product/a.png', href: 'content1.html', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: 'content2.html', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: 'content3.html', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: 'content4.html', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: 'content5.html', text: 'dasdadsad dqasdasd'},]
         },
-        { title: 'Karaoke Mixers',
-          items: [{src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},
-                  {src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},
-                  {src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},
-                  {src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},
-                  {src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},]
+        { title: 'Karaoke Players',
+          items: [{src: 'img/product/a.png', href: 'content1.html', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: 'content2.html', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: 'content3.html', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: 'content4.html', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: 'content5.html', text: 'dasdadsad dqasdasd'},]
+        },
+        { title: 'Active Speakers',
+          items: [{src: 'img/product/a.png', href: 'content1.html', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: 'content2.html', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: 'content3.html', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: 'content4.html', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: 'content5.html', text: 'dasdadsad dqasdasd'},]
+        },
+        { title: 'Wireless Mircrophone',
+          items: [{src: 'img/product/a.png', href: 'content1.html', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: 'content2.html', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: 'content3.html', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: 'content4.html', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: 'content5.html', text: 'dasdadsad dqasdasd'},]
         },
       ];
+
+
+
+  // 以下不用理他
 
   var $banner_container = $('#banner .banner_container').css ({width: banners.length * 1200 + 'px'})
                                                         .append (banners.map (function (t, i) { return $('<img />').attr ('src', t).css ({left: i * 1200 + 'px'}); }));
@@ -62,8 +87,21 @@ $(function () {
   });
 
   var $product = $('#product').append (products.map (function (t) {
-    return $('<div />').addClass ('content').append ($('<div />').addClass ('l').text (t.title)).append ($('<div />').addClass ('r').append (t.items.map (function (t) {
+    return $('<div />').attr ('data-hash', t.title.toLowerCase ()).addClass ('content').append ($('<div />').addClass ('l').text (t.title)).append ($('<div />').addClass ('r').append (t.items.map (function (t) {
       return $('<a />').attr ('href', t.href).addClass ('box').append ($('<img />').attr ('src', t.src)).append ($('<div />').addClass ('text').html (t.text));
     })));
   }));
+
+  if (window.location.hash.substring (1)) {
+    var hash = window.location.hash.substring (1).toLowerCase ();
+    $("html, body").stop ().animate ({
+      scrollTop: $('#product .content[data-hash="' + hash + '"]').offset ().top - 10}, 500);
+  }
+  $(window).on('hashchange', function() {
+    if (window.location.hash.substring (1)) {
+      var hash = window.location.hash.substring (1).toLowerCase ();
+      $("html, body").stop ().animate ({
+        scrollTop: $('#product .content[data-hash="' + hash + '"]').offset ().top - 10}, 500);
+    }
+  });
 });
