@@ -15,18 +15,18 @@ $(function () {
 
   var products = [
         { title: 'Karaoke Mixers',
-          items: [{src: 'img/product/a.png', text: 'dasdadsad dqasdasd'},
-                  {src: 'img/product/a.png', text: 'dasdadsad dqasdasd'},
-                  {src: 'img/product/a.png', text: 'dasdadsad dqasdasd'},
-                  {src: 'img/product/a.png', text: 'dasdadsad dqasdasd'},
-                  {src: 'img/product/a.png', text: 'dasdadsad dqasdasd'},]
+          items: [{src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},]
         },
         { title: 'Karaoke Mixers',
-          items: [{src: 'img/product/a.png', text: 'dasdadsad dqasdasd'},
-                  {src: 'img/product/a.png', text: 'dasdadsad dqasdasd'},
-                  {src: 'img/product/a.png', text: 'dasdadsad dqasdasd'},
-                  {src: 'img/product/a.png', text: 'dasdadsad dqasdasd'},
-                  {src: 'img/product/a.png', text: 'dasdadsad dqasdasd'},]
+          items: [{src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},
+                  {src: 'img/product/a.png', href: '', text: 'dasdadsad dqasdasd'},]
         },
       ];
 
@@ -63,7 +63,7 @@ $(function () {
 
   var $product = $('#product').append (products.map (function (t) {
     return $('<div />').addClass ('content').append ($('<div />').addClass ('l').text (t.title)).append ($('<div />').addClass ('r').append (t.items.map (function (t) {
-      return $('<div />').addClass ('box').append ($('<img />').attr ('src', t.src)).append ($('<div />').addClass ('text').html (t.text));
+      return $('<a />').attr ('href', t.href).addClass ('box').append ($('<img />').attr ('src', t.src)).append ($('<div />').addClass ('text').html (t.text));
     })));
   }));
 });
